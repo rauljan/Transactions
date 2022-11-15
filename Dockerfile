@@ -9,13 +9,13 @@ RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/
 # run stage
 FROM alpine:3.15
 WORKDIR /app
-COPY --from=builder /app/main .
-COPY --from=builder /app/migrate.linux-amd64 ./migrate
+COPY --from=builder /transactions/main .
+COPY --from=builder /transactions/migrate.linux-amd64 ./migrate
 COPY app.env .
 COPY startup.sh .
 COPY wait-for.sh .
 COPY db/migration ./migration
 
 EXPOSE 8080
-ENTRYPOINT [ "/app/startup.sh" ]
-CMD [ "/app/main" ]
+ENTRYPOINT [ "/transactions/startup.sh" ]
+CMD [ "/transactions/main" ]
