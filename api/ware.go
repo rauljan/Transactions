@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/rauljan/transactions/token"
+	"transactions/token"
 )
 
 const (

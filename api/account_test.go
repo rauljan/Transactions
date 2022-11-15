@@ -12,11 +12,11 @@ import (
 	"time"
 
 	"github.com/golang/mock/gomock"
-	mockdb "github.com/rauljan/transfers/db/mock"
-	db "github.com/rauljan/transfers/db/sqlc"
-	"github.com/rauljan/transfers/token"
-	"github.com/rauljan/transfers/util"
 	"github.com/stretchr/testify/require"
+	mockdb "transactions/db/mockdb"
+	db "transactions/db/sqlc"
+	"transactions/token"
+	"transactions/util"
 )
 
 func TestGetAccountAPI(t *testing.T) {

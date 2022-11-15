@@ -3,13 +3,14 @@ package api
 import (
 	"database/sql"
 	"errors"
+	"github.com/lib/pq"
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lib/pq"
-	db "github.com/rauljan/transactions/db/sqlc"
-	"github.com/rauljan/transactions/token"
+
+	db "transactions/db/sqlc"
+	"transactions/token"
 )
 
 type createAccountRequest struct {
@@ -34,7 +35,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 	}
 
 	// save to db
-	account, err := server.store.CreateAccount(ctx, arg)
+	account, err := server.store.СreateAccount(ctx, arg)
 	if err != nil {
 		if pqErr, ok := err.(*pq.Error); ok {
 			switch pqErr.Code.Name() {

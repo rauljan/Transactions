@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	db "github.com/rauljan/transactions/db/sqlc"
-	"github.com/rauljan/transactions/token"
+	db "transactions/db/sqlc"
+	"transactions/token"
 )
 
 type transferRequest struct {
@@ -37,7 +37,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 		return
 	}
 
-	_, valid = server.validAccount(ctx, req.ToAccountID, req.Currency)
+	_, valid = server.validAccount(ctx, req.ToAccountID)
 	if !valid {
 		return
 	}

@@ -4,10 +4,9 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
-	db "github.com/rauljan/transactions/db/sqlc"
-	"github.com/rauljan/transactions/token"
-	"github.com/rauljan/transactions/util"
+	db "transactions/db/sqlc"
+	"transactions/token"
+	"transactions/util"
 )
 
 // Server serves HTTP requests for the banking service
@@ -30,17 +29,16 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 		store:      store,
 		tokenMaker: tokenMaker,
 	}
-
-	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-		v.RegisterValidation("customCurrencyValidator", validateCurrency)
-	}
-
 	server.setupRouter()
 	return server, nil
 }
 
 func (server *Server) setupRouter() {
 	router := gin.Default()
+
+	router.POST("/users", server.createUser)
+	router.POST("/users/login", server.loginUser)
+	router.POST("/tokens/renew_access", server.renewAccessToken)
 
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))
 
