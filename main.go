@@ -2,13 +2,12 @@ package main
 
 import (
 	"database/sql"
-	"log"
-
 	_ "github.com/golang/mock/mockgen/model"
 	_ "github.com/lib/pq"
-	"github.com/rauljan/trsnactions/api"
-	db "github.com/rauljan/trsnactions/db/sqlc"
-	"github.com/srauljan/trsnactions/util"
+	"log"
+	"transactions/api"
+	db "transactions/db/sqlc"
+	"transactions/util"
 )
 
 func main() {
