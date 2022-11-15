@@ -1,5 +1,5 @@
 postgres:
-	docker run --name transactions --network transactions-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15-alpine
+	docker run --name transactions --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15-alpine
 
 createdb:
 	docker exec -it transactions createdb --username=root --owner=root bank
@@ -33,6 +33,6 @@ mock:
 
 local:
 	docker build -t transactions:latest .
-	docker run --name transactions --network transactions-network -p 8080:8080 -e GIN_MODE=release -e DB_SOURCE="postgres://root:secret@go-bank:5432/bank?sslmode=disable" gobank:latest
+	docker run --name transactions --network bank-network -p 8080:8080 -e GIN_MODE=release -e DB_SOURCE="postgres://root:secret@go-bank:5432/bank?sslmode=disable" transactions:latest
 
 .PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test server mock local
