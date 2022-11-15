@@ -3,6 +3,7 @@ package token
 import (
 	"errors"
 	"fmt"
+	"github.com/dgrijalva/jwt-go"
 	"time"
 )
 

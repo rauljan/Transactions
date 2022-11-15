@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rauljan/transactions/util"
 	"github.com/stretchr/testify/require"
+	"transactions/util"
 )
 
 func TestPasetoMaker(t *testing.T) {
