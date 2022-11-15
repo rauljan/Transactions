@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+	"transactions/util"
 )
 
 // createRandomAccount creates a random account to be used in tests

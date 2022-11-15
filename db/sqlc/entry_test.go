@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+	"transactions/util"
 )
 
 // createRandomEntry creates a random entry to be used in tests

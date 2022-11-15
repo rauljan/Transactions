@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"testing"
+	"transactions/util"
 
 	_ "github.com/lib/pq"
 )

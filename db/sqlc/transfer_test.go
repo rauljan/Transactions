@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+	"transactions/util"
 )
 
 // createRandomTransfer creates a random transfer to be used in the tests
